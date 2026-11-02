@@ -2,7 +2,6 @@ export interface Technology {
   name: string;
   category: string;
   tag?: string;
-  iconSlug?: string;
 }
 
 export interface SkillCategoryGroup {
@@ -15,89 +14,89 @@ export interface SkillCategoryGroup {
 export const skillCategoryGroups: SkillCategoryGroup[] = [
   {
     id: "programming-languages",
-    title: "PROGRAMMING LANGUAGES",
-    description: "Core languages utilized across software, systems, and algorithms",
+    title: "Programming Languages",
+    description: "Core languages for software engineering, system architecture, and algorithmic problem-solving.",
     technologies: [
-      { name: "Python", category: "Language", tag: "Core" },
-      { name: "C++", category: "Language", tag: "Systems" },
-      { name: "C", category: "Language", tag: "Low-Level" },
-      { name: "JavaScript", category: "Language", tag: "Web" },
-      { name: "TypeScript", category: "Language", tag: "Typed" },
-      { name: "Java", category: "Language", tag: "OOP" },
-      { name: "Bash", category: "Language", tag: "Scripting" }
+      { name: "Python", category: "Languages", tag: "Primary" },
+      { name: "C++", category: "Languages", tag: "Systems" },
+      { name: "C", category: "Languages", tag: "Low-level" },
+      { name: "JavaScript", category: "Languages", tag: "Web" },
+      { name: "TypeScript", category: "Languages", tag: "Typed" },
+      { name: "Java", category: "Languages", tag: "OOP" },
+      { name: "Bash", category: "Languages", tag: "Scripting" }
     ]
   },
   {
-    id: "frontend-development",
-    title: "FRONTEND DEVELOPMENT",
-    description: "Modern component architecture, web standards, and UI rendering",
+    id: "frontend",
+    title: "Frontend",
+    description: "Web markup, semantic structuring, modern styling, and interactive chart visualization.",
     technologies: [
-      { name: "React", category: "Frontend", tag: "UI" },
-      { name: "Next.js", category: "Frontend", tag: "SSR" },
-      { name: "HTML5", category: "Frontend", tag: "Structure" },
+      { name: "HTML5", category: "Frontend", tag: "Markup" },
       { name: "CSS3", category: "Frontend", tag: "Styling" },
-      { name: "AngularJS", category: "Frontend", tag: "SPA" },
+      { name: "AngularJS", category: "Frontend", tag: "Framework" },
       { name: "CanvasJS", category: "Frontend", tag: "Charts" }
     ]
   },
   {
-    id: "backend-cloud",
-    title: "BACKEND & CLOUD",
-    description: "Server architecture, microservices, REST APIs, and cloud infrastructure",
+    id: "backend",
+    title: "Backend",
+    description: "Server runtimes, microservices, REST API engineering, and cloud infrastructure.",
     technologies: [
       { name: "Node.js", category: "Backend", tag: "Runtime" },
-      { name: "Django", category: "Backend", tag: "Framework" },
+      { name: "Django", category: "Backend", tag: "Web" },
       { name: "Flask", category: "Backend", tag: "APIs" },
       { name: "Firebase", category: "Backend", tag: "BaaS" },
-      { name: "Microsoft Azure", category: "Cloud", tag: "Cloud" },
-      { name: "Docker", category: "DevOps", tag: "Containers" }
+      { name: "Microsoft Azure", category: "Backend", tag: "Cloud" }
     ]
   },
   {
-    id: "ai-data",
-    title: "AI, ML & DATA",
-    description: "Machine learning workflows, deep learning, and analytical processing",
+    id: "frameworks-libraries",
+    title: "Frameworks and Libraries",
+    description: "Component systems, machine learning toolkits, and data manipulation libraries.",
     technologies: [
-      { name: "PyTorch", category: "AI/ML", tag: "Deep Learning" },
-      { name: "Pandas", category: "Data", tag: "Analytics" }
+      { name: "React", category: "Frameworks", tag: "UI" },
+      { name: "Next.js", category: "Frameworks", tag: "Full-Stack" },
+      { name: "PyTorch", category: "Frameworks", tag: "Deep Learning" },
+      { name: "Pandas", category: "Frameworks", tag: "Data Analysis" }
     ]
   },
   {
     id: "databases",
-    title: "DATABASES",
-    description: "Relational and document storage systems for persistent applications",
+    title: "Databases",
+    description: "Relational, document, and embedded storage solutions for robust data persistence.",
     technologies: [
-      { name: "MongoDB", category: "Database", tag: "NoSQL" },
-      { name: "MySQL", category: "Database", tag: "SQL" },
-      { name: "SQLite", category: "Database", tag: "Embedded" },
-      { name: "MS SQL Server", category: "Database", tag: "Enterprise" },
-      { name: "Oracle", category: "Database", tag: "Enterprise" }
+      { name: "MongoDB", category: "Databases", tag: "NoSQL" },
+      { name: "MySQL", category: "Databases", tag: "Relational" },
+      { name: "SQLite", category: "Databases", tag: "Embedded" },
+      { name: "MS SQL Server", category: "Databases", tag: "Enterprise" },
+      { name: "Oracle", category: "Databases", tag: "Enterprise" }
     ]
   },
   {
-    id: "mobile-hardware",
-    title: "MOBILE, ROBOTICS & EMBEDDED",
-    description: "Cross-platform mobile apps and microcontroller hardware integration",
+    id: "development-tools",
+    title: "Development Tools",
+    description: "Version control systems, containerization, and Unix development environments.",
     technologies: [
-      { name: "React Native", category: "Mobile", tag: "Mobile" },
-      { name: "Flutter", category: "Mobile", tag: "Mobile" },
-      { name: "Android", category: "Mobile", tag: "OS" },
-      { name: "Arduino", category: "Hardware", tag: "Robotics" }
+      { name: "Git", category: "Tools", tag: "VCS" },
+      { name: "Docker", category: "Tools", tag: "Containers" },
+      { name: "Linux", category: "Tools", tag: "OS" }
     ]
   },
   {
-    id: "tools-creative",
-    title: "DEVELOPER & CREATIVE TOOLS",
-    description: "Version control, Linux environments, 3D modelling, and interface design",
+    id: "other-technologies",
+    title: "Other Technologies",
+    description: "Mobile applications, robotics/embedded microcontrollers, 3D modelling, and creative tools.",
     technologies: [
-      { name: "Git", category: "Dev Tools", tag: "VCS" },
-      { name: "Linux", category: "Dev Tools", tag: "Environment" },
-      { name: "Figma", category: "Design", tag: "UI/UX" },
-      { name: "Framer", category: "Design", tag: "Prototyping" },
-      { name: "Blender", category: "3D", tag: "3D Graphics" },
-      { name: "Photoshop", category: "Design", tag: "Creative" },
-      { name: "Unity", category: "Engine", tag: "Simulation" },
-      { name: "Unreal Engine", category: "Engine", tag: "Simulation" }
+      { name: "React Native", category: "Other", tag: "Mobile" },
+      { name: "Flutter", category: "Other", tag: "Mobile" },
+      { name: "Android", category: "Other", tag: "Platform" },
+      { name: "Arduino", category: "Other", tag: "Robotics" },
+      { name: "Figma", category: "Other", tag: "Design" },
+      { name: "Framer", category: "Other", tag: "Prototyping" },
+      { name: "Blender", category: "Other", tag: "3D" },
+      { name: "Photoshop", category: "Other", tag: "Creative" },
+      { name: "Unity", category: "Other", tag: "Engine" },
+      { name: "Unreal Engine", category: "Other", tag: "Simulation" }
     ]
   }
 ];

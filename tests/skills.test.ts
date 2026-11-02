@@ -1,8 +1,8 @@
 import { skillCategoryGroups } from '../src/data/skills';
 
 describe('Technical Skills Truthfulness from GitHub README', () => {
-  test('contains categorized groups matching GitHub profile', () => {
-    expect(skillCategoryGroups.length).toBeGreaterThanOrEqual(5);
+  test('contains 7 categorized groups matching GitHub profile', () => {
+    expect(skillCategoryGroups).toHaveLength(7);
   });
 
   test('programming languages strictly contain Python, C++, C, JavaScript, TypeScript, Java, Bash', () => {
@@ -17,12 +17,22 @@ describe('Technical Skills Truthfulness from GitHub README', () => {
     expect(names).toContain('Bash');
   });
 
-  test('frontend contains React, Next.js, HTML5, CSS3', () => {
-    const front = skillCategoryGroups.find(c => c.id === 'frontend-development')!;
+  test('frontend contains HTML5, CSS3, AngularJS, CanvasJS', () => {
+    const front = skillCategoryGroups.find(c => c.id === 'frontend')!;
     const names = front.technologies.map(s => s.name);
-    expect(names).toContain('React');
-    expect(names).toContain('Next.js');
     expect(names).toContain('HTML5');
     expect(names).toContain('CSS3');
+    expect(names).toContain('AngularJS');
+    expect(names).toContain('CanvasJS');
+  });
+
+  test('backend contains Node.js, Django, Flask, Firebase, Microsoft Azure', () => {
+    const backend = skillCategoryGroups.find(c => c.id === 'backend')!;
+    const names = backend.technologies.map(s => s.name);
+    expect(names).toContain('Node.js');
+    expect(names).toContain('Django');
+    expect(names).toContain('Flask');
+    expect(names).toContain('Firebase');
+    expect(names).toContain('Microsoft Azure');
   });
 });
