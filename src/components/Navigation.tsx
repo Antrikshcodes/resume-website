@@ -189,3 +189,5 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
     </>
   );
 };
+
+// Navigation backdrop saturation tuning
