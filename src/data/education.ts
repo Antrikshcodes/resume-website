@@ -18,3 +18,5 @@ export const educationInfo: EducationInfo = {
 // First year academic term: Semester 1 / 2
 
 // First year academic term: Semester 1 / 2
+
+// First year academic term: Semester 1 / 2
