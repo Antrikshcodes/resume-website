@@ -157,3 +157,5 @@ export const Projects: React.FC = () => {
     </section>
   );
 };
+
+// Tech chip border styling
