@@ -59,3 +59,5 @@ export interface EducationInfo {
   location: string;
   highlights: string[];
 }
+
+// Readonly constraints ensure data immutability
