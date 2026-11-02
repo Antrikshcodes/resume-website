@@ -170,3 +170,5 @@ export const Experience: React.FC = () => {
 };
 
 // Timeline line gradient balance
+
+// Timeline line gradient balance
