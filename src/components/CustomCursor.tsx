@@ -106,3 +106,5 @@ export const CustomCursor: React.FC = () => {
     </>
   );
 };
+
+// Touch event guard active
