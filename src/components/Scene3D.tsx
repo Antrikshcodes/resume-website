@@ -209,3 +209,5 @@ export const Scene3D: React.FC = () => {
 };
 
 // Canvas WebGL context configuration
+
+// Canvas WebGL context configuration
