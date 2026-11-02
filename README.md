@@ -42,3 +42,23 @@ Inspired by the visual sophistication of **Hamol Studio** ([hamol.studio](https:
 3. **Three.js & React Three Fiber:** Gyroscopic orbital mechanics with reflective metallic shaders, mouse-damped tilt physics, and responsive WebGL/mobile fallbacks.
 4. **Micro-interactions:** Desktop magnetic spring cursor, live India Standard Time (IST) clock, and audio feedback.
 5. **Print & ATS Compliance:** Embedded, downloadable, ATS-friendly one-page printable PDF (`public/resume.pdf`).
+
+## 4. Getting Started & Development
+
+```bash
+# Clone the repository
+git clone https://github.com/Antrikshcodes/resume-website.git
+cd resume-website
+
+# Install dependencies
+npm install
+
+# Start local dev server
+npm run dev
+
+# Generate ATS-compliant 1-page PDF
+python3 scripts/generate_resume_pdf.py
+
+# Build for production
+npm run build
+```
