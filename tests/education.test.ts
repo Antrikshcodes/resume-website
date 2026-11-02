@@ -6,8 +6,8 @@ describe('Education Data Authenticity', () => {
     expect(educationInfo.specialization).toBe('Artificial Intelligence');
   });
 
-  test('enrollment timeline starts 2026', () => {
-    expect(educationInfo.period).toContain('2026');
+  test('enrollment timeline is 2026–2030', () => {
+    expect(educationInfo.period).toBe('2026–2030');
   });
 
   test('no fabricated metrics or fake CGPA', () => {

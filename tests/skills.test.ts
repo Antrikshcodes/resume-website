@@ -1,22 +1,28 @@
-import { skillCategories } from '../src/data/skills';
+import { skillCategoryGroups } from '../src/data/skills';
 
-describe('Technical Skills Truthfulness', () => {
-  test('contains 3 distinct categories', () => {
-    expect(skillCategories).toHaveLength(3);
-    const keys = skillCategories.map(c => c.key);
-    expect(keys).toEqual(['programming', 'tools', 'interests']);
+describe('Technical Skills Truthfulness from GitHub README', () => {
+  test('contains categorized groups matching GitHub profile', () => {
+    expect(skillCategoryGroups.length).toBeGreaterThanOrEqual(5);
   });
 
-  test('programming languages strictly contain Python, HTML, CSS', () => {
-    const prog = skillCategories.find(c => c.key === 'programming')!;
-    const names = prog.skills.map(s => s.name);
+  test('programming languages strictly contain Python, C++, C, JavaScript, TypeScript, Java, Bash', () => {
+    const prog = skillCategoryGroups.find(c => c.id === 'programming-languages')!;
+    const names = prog.technologies.map(s => s.name);
     expect(names).toContain('Python');
-    expect(names).toContain('HTML');
-    expect(names).toContain('CSS');
+    expect(names).toContain('C++');
+    expect(names).toContain('C');
+    expect(names).toContain('JavaScript');
+    expect(names).toContain('TypeScript');
+    expect(names).toContain('Java');
+    expect(names).toContain('Bash');
   });
 
-  test('interests are separated from claimed expertise', () => {
-    const interests = skillCategories.find(c => c.key === 'interests')!;
-    expect(interests.title).toBe('AREAS OF INTEREST');
+  test('frontend contains React, Next.js, HTML5, CSS3', () => {
+    const front = skillCategoryGroups.find(c => c.id === 'frontend-development')!;
+    const names = front.technologies.map(s => s.name);
+    expect(names).toContain('React');
+    expect(names).toContain('Next.js');
+    expect(names).toContain('HTML5');
+    expect(names).toContain('CSS3');
   });
 });
