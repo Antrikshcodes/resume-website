@@ -62,3 +62,5 @@ python3 scripts/generate_resume_pdf.py
 # Build for production
 npm run build
 ```
+
+<!-- Recruiter contact: antriksh.codes@outlook.com -->
