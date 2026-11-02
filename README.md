@@ -34,3 +34,11 @@ Inspired by the visual sophistication of **Hamol Studio** ([hamol.studio](https:
 - **Accent:** Subtle electric lime / chartreuse (`#D4F36A`) used sparingly for focused visual hierarchy.
 - **Borders & Dividers:** Precision hairline borders (`rgba(255, 255, 255, 0.12)`).
 - **Asymmetric Composition:** Left-anchored editorial typography paired with an interactive 3D metallic gyroscopic structure.
+
+## 3. Motion Architecture & 3D Engineering
+
+1. **GSAP + ScrollTrigger:** Masked text reveals, scrubbed vertical timeline tracks, and staggered capability matrices.
+2. **Lenis:** Smooth, momentum-based scrolling with RAF synchronization.
+3. **Three.js & React Three Fiber:** Gyroscopic orbital mechanics with reflective metallic shaders, mouse-damped tilt physics, and responsive WebGL/mobile fallbacks.
+4. **Micro-interactions:** Desktop magnetic spring cursor, live India Standard Time (IST) clock, and audio feedback.
+5. **Print & ATS Compliance:** Embedded, downloadable, ATS-friendly one-page printable PDF (`public/resume.pdf`).
