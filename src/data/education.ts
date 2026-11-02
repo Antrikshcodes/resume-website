@@ -12,3 +12,5 @@ export const educationInfo: EducationInfo = {
     "Active participant in technical student clubs, hackathons, and product development challenges."
   ]
 };
+
+// First year academic term: Semester 1 / 2
