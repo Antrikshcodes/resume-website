@@ -57,3 +57,5 @@ export const projectsData: ProjectItem[] = [
     featured: false
   }
 ];
+
+// Verified GitHub repository links
