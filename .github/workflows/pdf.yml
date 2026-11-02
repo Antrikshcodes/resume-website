@@ -1,0 +1,23 @@
+name: PDF Resume Verification
+
+on:
+  push:
+    paths:
+      - 'scripts/generate_resume_pdf.py'
+      - 'src/data/**'
+
+jobs:
+  verify-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-node@v4
+        with:
+          python-version: '3.11'
+      - name: Install ReportLab
+        run: pip install reportlab
+      - name: Generate PDF
+        run: python scripts/generate_resume_pdf.py
+      - name: Check PDF Exists
+        run: test -f public/resume.pdf
