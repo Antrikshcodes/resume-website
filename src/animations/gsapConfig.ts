@@ -20,3 +20,4 @@ export const TRANSITION_DEFAULTS = {
 };
 
 export { gsap, ScrollTrigger };
+

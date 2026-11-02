@@ -17,11 +17,11 @@ export const AudioToggle: React.FC = () => {
   return (
     <button
       onClick={handleToggle}
-      className="p-1.5 rounded-full border border-[rgba(255,255,255,0.1)] text-[#929292] hover:text-[#D4F36A] hover:border-[#D4F36A] transition-all"
+      className="p-1.5 rounded-full border border-[#DEDDD6] bg-[#FFFFFF] text-[#77766F] hover:text-[#171717] hover:border-[#171717] transition-all shadow-xs"
       title={muted ? 'Enable interface feedback audio' : 'Mute feedback audio'}
       aria-label="Toggle interface audio feedback"
     >
-      {muted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-[#D4F36A]" />}
+      {muted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-[#171717]" />}
     </button>
   );
 };

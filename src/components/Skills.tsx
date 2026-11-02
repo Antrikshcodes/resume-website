@@ -1,16 +1,16 @@
-import React, { useRef, useEffect } from 'react';
-import { skillCategories } from '../data/skills';
+import React, { useRef, useEffect, useState } from 'react';
+import { skillCategoryGroups } from '../data/skills';
 import { gsap, EASES } from '../animations/gsapConfig';
-import { Terminal, Code, Cpu, Sparkles } from 'lucide-react';
+import { Code2, Layout, Server, Database, Smartphone, Wrench, BrainCircuit } from 'lucide-react';
 
 export const Skills: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const categoriesRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header entrance
       gsap.from(headerRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -23,19 +23,17 @@ export const Skills: React.FC = () => {
         ease: EASES.editorial
       });
 
-      // Categories staggered entrance
-      if (categoriesRef.current) {
-        const categoryBlocks = categoriesRef.current.children;
-        gsap.from(categoryBlocks, {
+      if (gridRef.current) {
+        gsap.from(gridRef.current.children, {
           scrollTrigger: {
-            trigger: categoriesRef.current,
+            trigger: gridRef.current,
             start: 'top 82%',
             once: true
           },
-          y: 45,
+          y: 35,
           opacity: 0,
-          stagger: 0.15,
-          duration: 1,
+          stagger: 0.1,
+          duration: 0.9,
           ease: EASES.editorial
         });
       }
@@ -44,111 +42,143 @@ export const Skills: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
-  const getCategoryIcon = (key: string) => {
-    switch (key) {
-      case 'programming':
-        return <Code className="w-4 h-4 text-[#D4F36A]" />;
-      case 'tools':
-        return <Terminal className="w-4 h-4 text-[#D4F36A]" />;
-      case 'interests':
-        return <Cpu className="w-4 h-4 text-[#D4F36A]" />;
+  const getCategoryIcon = (id: string) => {
+    switch (id) {
+      case 'programming-languages':
+        return <Code2 className="w-4 h-4 text-[#171717]" />;
+      case 'frontend-development':
+        return <Layout className="w-4 h-4 text-[#171717]" />;
+      case 'backend-cloud':
+        return <Server className="w-4 h-4 text-[#171717]" />;
+      case 'ai-data':
+        return <BrainCircuit className="w-4 h-4 text-[#171717]" />;
+      case 'databases':
+        return <Database className="w-4 h-4 text-[#171717]" />;
+      case 'mobile-hardware':
+        return <Smartphone className="w-4 h-4 text-[#171717]" />;
+      case 'tools-creative':
+        return <Wrench className="w-4 h-4 text-[#171717]" />;
       default:
-        return <Sparkles className="w-4 h-4 text-[#D4F36A]" />;
+        return <Code2 className="w-4 h-4 text-[#171717]" />;
     }
   };
+
+  const filteredCategories = selectedCategory === 'all'
+    ? skillCategoryGroups
+    : skillCategoryGroups.filter(c => c.id === selectedCategory);
 
   return (
     <section
       id="skills"
       ref={sectionRef}
-      className="py-24 md:py-32 px-6 md:px-12 border-b border-[rgba(255,255,255,0.08)] bg-[#090909]"
+      className="py-24 md:py-32 px-6 md:px-12 border-b border-[#DEDDD6] bg-[#EFEEE8]/60"
     >
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-[rgba(255,255,255,0.1)]">
+        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-[#DEDDD6]">
           <div>
-            <div className="flex items-center space-x-2 text-xs font-mono tracking-widest text-[#D4F36A] uppercase mb-3">
-              <span>02 // CAPABILITIES & FOCUS</span>
+            <div className="flex items-center space-x-2 text-xs font-mono tracking-widest text-[#77766F] uppercase mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B7CC64]"></span>
+              <span>03 // LANGUAGES & TOOLS</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tightest uppercase text-[#F4F2ED]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tightest uppercase text-[#171717]">
               TECHNICAL SKILLS
             </h2>
           </div>
-          <div className="mt-4 md:mt-0 text-xs font-mono text-[#929292] tracking-wider">
-            [ HONEST PROFICIENCY & ACTIVE LEARNING AREAS ]
+          <div className="mt-4 md:mt-0 text-xs font-mono text-[#77766F] tracking-wider">
+            [ EXTRACTED FROM GITHUB PROFILE README / VERIFIED STACK ]
           </div>
         </div>
 
-        {/* Categorized Skills Grid */}
-        <div ref={categoriesRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {skillCategories.map((cat, idx) => (
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap gap-2 mb-10 pb-4 border-b border-[#DEDDD6]/60">
+          <button
+            onClick={() => setSelectedCategory('all')}
+            className={`px-3 py-1.5 rounded-full text-xs font-mono tracking-wider transition-all ${
+              selectedCategory === 'all'
+                ? 'bg-[#171717] text-[#FFFFFF] shadow-sm'
+                : 'bg-[#FFFFFF] text-[#77766F] border border-[#DEDDD6] hover:border-[#171717]'
+            }`}
+          >
+            ALL CATEGORIES ({skillCategoryGroups.reduce((acc, c) => acc + c.technologies.length, 0)})
+          </button>
+          {skillCategoryGroups.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-3 py-1.5 rounded-full text-xs font-mono tracking-wider transition-all ${
+                selectedCategory === cat.id
+                  ? 'bg-[#171717] text-[#FFFFFF] shadow-sm'
+                  : 'bg-[#FFFFFF] text-[#77766F] border border-[#DEDDD6] hover:border-[#171717]'
+              }`}
+            >
+              {cat.title} ({cat.technologies.length})
+            </button>
+          ))}
+        </div>
+
+        {/* Categorized Skills Grid in Editorial Light Cards */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredCategories.map((group, idx) => (
             <div
-              key={cat.key}
-              className="bg-[#111111]/60 border border-[rgba(255,255,255,0.08)] rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-[rgba(255,255,255,0.2)] transition-all duration-300"
+              key={group.id}
+              className="bg-[#FFFFFF] border border-[#DEDDD6] rounded-2xl p-6 sm:p-7 shadow-editorial hover:border-[#171717] transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 {/* Category Header */}
-                <div className="flex items-center justify-between pb-6 border-b border-[rgba(255,255,255,0.08)] mb-6">
+                <div className="flex items-center justify-between pb-4 border-b border-[#DEDDD6] mb-5">
                   <div className="flex items-center space-x-2.5">
-                    {getCategoryIcon(cat.key)}
-                    <h3 className="text-sm font-mono tracking-widest font-semibold text-[#F4F2ED]">
-                      {cat.title}
+                    {getCategoryIcon(group.id)}
+                    <h3 className="text-xs font-mono tracking-widest font-bold text-[#171717]">
+                      {group.title}
                     </h3>
                   </div>
-                  <span className="text-[11px] font-mono text-[#929292]">0{idx + 1}</span>
+                  <span className="text-[11px] font-mono text-[#77766F]">0{idx + 1}</span>
                 </div>
 
-                {/* Skill Labels */}
-                <div className="flex flex-col space-y-3">
-                  {cat.skills.map((skill) => (
+                <p className="text-xs font-body text-[#77766F] mb-4 leading-relaxed">
+                  {group.description}
+                </p>
+
+                {/* Technology Chips Matrix */}
+                <div className="flex flex-wrap gap-2">
+                  {group.technologies.map((tech) => (
                     <div
-                      key={skill.name}
-                      className="group relative p-3.5 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#151515]/60 hover:bg-[#1a1a1a] hover:border-[#D4F36A]/40 transition-all duration-300 transform hover:-translate-y-0.5"
+                      key={tech.name}
+                      className="group/item relative px-3 py-1.5 rounded-lg border border-[#DEDDD6] bg-[#F7F6F2] hover:bg-[#FFFFFF] hover:border-[#B7CC64] transition-all duration-200 flex items-center space-x-2 shadow-xs"
                     >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-base font-sans font-medium text-[#F4F2ED] group-hover:text-[#D4F36A] transition-colors">
-                          {skill.name}
+                      <span className="text-xs font-sans font-medium text-[#171717]">
+                        {tech.name}
+                      </span>
+                      {tech.tag && (
+                        <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-[#EFEEE8] text-[#77766F] group-hover/item:text-[#171717] group-hover/item:bg-[#B7CC64]/20 transition-colors">
+                          {tech.tag}
                         </span>
-                        {skill.tag && (
-                          <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-md bg-[rgba(255,255,255,0.05)] text-[#929292] group-hover:text-[#D4F36A] group-hover:bg-[#D4F36A]/10 transition-colors">
-                            {skill.tag}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Honest Context Description instead of fake progress bars */}
-                      {skill.levelDescription && (
-                        <p className="text-xs font-mono text-[#929292] line-clamp-1 group-hover:text-[#F4F2ED]/80 transition-colors">
-                          {skill.levelDescription}
-                        </p>
                       )}
-
-                      {/* Subtle underline animation on hover */}
-                      <span className="absolute bottom-0 left-4 right-4 h-[1px] bg-[#D4F36A] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                      {/* Subtle underline indicator on hover */}
+                      <span className="absolute bottom-0 left-2 right-2 h-[1.5px] bg-[#B7CC64] scale-x-0 group-hover/item:scale-x-100 transition-transform duration-200 origin-left" />
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Category Footer Note */}
-              <div className="pt-6 mt-6 border-t border-[rgba(255,255,255,0.06)] text-[11px] font-mono text-[#929292] flex items-center justify-between">
-                <span>{cat.skills.length} ITEMS</span>
-                <span className="text-[#D4F36A] uppercase tracking-wider">
-                  {cat.key === 'interests' ? 'ACADEMIC EXPLORATION' : 'VERIFIED STACK'}
-                </span>
+              {/* Bottom Card Meta */}
+              <div className="pt-5 mt-5 border-t border-[#DEDDD6]/60 text-[10px] font-mono text-[#77766F] flex items-center justify-between">
+                <span>{group.technologies.length} TECHNOLOGIES</span>
+                <span className="text-[#171717] font-medium">README.MD VERIFIED</span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Integrity Statement */}
-        <div className="mt-12 p-4 rounded-xl border border-[rgba(255,255,255,0.06)] bg-[#111111]/30 flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-[#929292]">
+        {/* Truthfulness Notice */}
+        <div className="mt-10 p-4 rounded-xl border border-[#DEDDD6] bg-[#FFFFFF] flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-[#77766F] shadow-xs">
           <div className="flex items-center space-x-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4F36A]"></span>
-            <span>TRANSPARENCY NOTE: Proficiency reflects genuine undergraduate engineering experience.</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B7CC64]"></span>
+            <span>TRANSPARENCY: Exactly mirrors the “Languages and Tools” from GitHub @Antrikshcodes.</span>
           </div>
-          <span className="mt-2 sm:mt-0 text-[10px] text-[#929292]/70">NO ARTIFICIAL PERCENTAGES</span>
+          <span className="mt-2 sm:mt-0 text-[10px] text-[#171717] font-medium">ZERO FAKE SKILL BARS</span>
         </div>
 
       </div>

@@ -10,12 +10,16 @@ import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
+import { KeyboardShortcuts } from './components/KeyboardShortcuts';
+import { JsonLd } from './components/JsonLd';
+import { SkipToContent } from './components/SkipToContent';
 import { ScrollTrigger } from './animations/gsapConfig';
 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [activeSection, setActiveSection] = useState<string>('hero');
   const [isResumeModalOpen, setIsResumeModalOpen] = useState<boolean>(false);
+  const [isShortcutsOpen, setIsShortcutsOpen] = useState<boolean>(false);
 
   // Initialize Lenis smooth scroll and connect to GSAP ScrollTrigger
   useEffect(() => {
@@ -39,7 +43,7 @@ export const App: React.FC = () => {
     const rafId = requestAnimationFrame(raf);
 
     // Section Observer for active navigation pill
-    const sections = ['hero', 'education', 'skills', 'experience', 'projects', 'contact'];
+    const sections = ['hero', 'education', 'skills', 'activities', 'projects', 'contact'];
     const handleScrollSpy = () => {
       const scrollPosition = window.scrollY + window.innerHeight * 0.35;
       for (const sectionId of sections) {
@@ -57,16 +61,69 @@ export const App: React.FC = () => {
 
     window.addEventListener('scroll', handleScrollSpy, { passive: true });
 
+    // Keyboard Shortcuts for Quick Recruiter Navigation
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+      switch (e.key.toLowerCase()) {
+        case '1': {
+          const el = document.getElementById('hero');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          break;
+        }
+        case '2': {
+          const el = document.getElementById('education');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          break;
+        }
+        case '3': {
+          const el = document.getElementById('skills');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          break;
+        }
+        case '4': {
+          const el = document.getElementById('activities');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          break;
+        }
+        case '5': {
+          const el = document.getElementById('projects');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          break;
+        }
+        case 'r':
+          setIsResumeModalOpen((prev) => !prev);
+          break;
+        case '?':
+          setIsShortcutsOpen((prev) => !prev);
+          break;
+        case 'escape':
+          setIsResumeModalOpen(false);
+          setIsShortcutsOpen(false);
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
       window.removeEventListener('scroll', handleScrollSpy);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#090909] text-[#F4F2ED] selection:bg-[#D4F36A] selection:text-[#090909]">
-      {/* Film Grain Texture Overlay */}
+    <div className="relative min-h-screen bg-[#F7F6F2] text-[#171717] selection:bg-[#B7CC64] selection:text-[#171717]">
+      {/* Schema.org Structured Data */}
+      <JsonLd />
+
+      {/* Accessible Skip to Content */}
+      <SkipToContent />
+
+      {/* Subtle Tactile Film Grain Texture */}
       <div className="grain-overlay" />
 
       {/* Preloader opening sequence */}
@@ -76,9 +133,12 @@ export const App: React.FC = () => {
       <CustomCursor />
 
       {/* Persistent Floating Navigation */}
-      <Navigation activeSection={activeSection} />
+      <Navigation
+        activeSection={activeSection}
+        onDownloadResume={() => setIsResumeModalOpen(true)}
+      />
 
-      {/* Main Resume Content Architecture */}
+      {/* 5 Main Resume Content Sections */}
       <main className="relative z-10">
         <Hero onDownloadResume={() => setIsResumeModalOpen(true)} />
         <Education />
@@ -94,6 +154,12 @@ export const App: React.FC = () => {
       <ResumeModal
         isOpen={isResumeModalOpen}
         onClose={() => setIsResumeModalOpen(false)}
+      />
+
+      {/* Recruiter Keyboard Shortcuts Help */}
+      <KeyboardShortcuts
+        isOpen={isShortcutsOpen}
+        onClose={() => setIsShortcutsOpen(false)}
       />
     </div>
   );

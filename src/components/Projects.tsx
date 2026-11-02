@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { projectsData } from '../data/projects';
 import { gsap, EASES } from '../animations/gsapConfig';
-import { Github, ExternalLink, Cpu, Layers } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 
 export const Projects: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -10,7 +10,6 @@ export const Projects: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header entrance
       gsap.from(headerRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -23,7 +22,6 @@ export const Projects: React.FC = () => {
         ease: EASES.editorial
       });
 
-      // Staggered asymmetric cards reveal
       projectCardsRef.current.forEach((card) => {
         if (!card) return;
         gsap.from(card, {
@@ -47,48 +45,49 @@ export const Projects: React.FC = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="py-24 md:py-32 px-6 md:px-12 border-b border-[rgba(255,255,255,0.08)] bg-[#090909] relative"
+      className="py-24 md:py-32 px-6 md:px-12 border-b border-[#DEDDD6] bg-[#EFEEE8]/60 relative"
     >
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between mb-20 pb-6 border-b border-[rgba(255,255,255,0.1)]">
+        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between mb-20 pb-6 border-b border-[#DEDDD6]">
           <div>
-            <div className="flex items-center space-x-2 text-xs font-mono tracking-widest text-[#D4F36A] uppercase mb-3">
-              <span>04 // TECHNICAL BUILDS & SYSTEMS</span>
+            <div className="flex items-center space-x-2 text-xs font-mono tracking-widest text-[#77766F] uppercase mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B7CC64]"></span>
+              <span>05 // TECHNICAL BUILDS</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tightest uppercase text-[#F4F2ED]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tightest uppercase text-[#171717]">
               SELECTED PROJECTS
             </h2>
           </div>
-          <div className="mt-4 md:mt-0 text-xs font-mono text-[#929292] tracking-wider">
+          <div className="mt-4 md:mt-0 text-xs font-mono text-[#77766F] tracking-wider">
             [ 05 VERIFIED PROTOTYPES & SYSTEMS ]
           </div>
         </div>
 
-        {/* Minimal Asymmetric Editorial Project List */}
-        <div className="space-y-8">
+        {/* Minimal Asymmetric Editorial Project List in Light Theme */}
+        <div className="space-y-6 sm:space-y-8">
           {projectsData.map((project, index) => (
             <div
               key={project.id}
               ref={(el) => (projectCardsRef.current[index] = el)}
-              className="group relative bg-[#111111]/70 border border-[rgba(255,255,255,0.08)] hover:border-[#D4F36A]/50 rounded-2xl p-6 sm:p-10 transition-all duration-300"
+              className="group relative bg-[#FFFFFF] border border-[#DEDDD6] hover:border-[#171717] rounded-2xl p-6 sm:p-10 transition-all duration-300 shadow-editorial hover:shadow-editorialHover"
             >
               {/* Subtle accent hover indicator on left border */}
-              <div className="absolute left-0 top-8 bottom-8 w-[2px] bg-[#D4F36A] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-r" />
+              <div className="absolute left-0 top-8 bottom-8 w-[2.5px] bg-[#B7CC64] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-r" />
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                 
                 {/* Left: Index & Meta (3 cols) */}
                 <div className="lg:col-span-3 space-y-2">
                   <div className="flex items-baseline space-x-3">
-                    <span className="text-3xl sm:text-4xl font-mono font-medium text-[#D4F36A] tracking-tighter">
+                    <span className="text-3xl sm:text-4xl font-mono font-bold text-[#171717] tracking-tighter">
                       {project.number}
                     </span>
-                    <span className="text-xs font-mono text-[#929292]">/ 05</span>
+                    <span className="text-xs font-mono text-[#77766F]">/ 05</span>
                   </div>
 
-                  <div className="inline-block px-2.5 py-1 rounded text-[11px] font-mono uppercase bg-[rgba(255,255,255,0.04)] text-[#929292] border border-[rgba(255,255,255,0.08)]">
+                  <div className="inline-block px-2.5 py-1 rounded text-[11px] font-mono uppercase bg-[#F7F6F2] text-[#77766F] border border-[#DEDDD6]">
                     {project.category}
                   </div>
                 </div>
@@ -96,15 +95,15 @@ export const Projects: React.FC = () => {
                 {/* Center: Title & Description (6 cols) */}
                 <div className="lg:col-span-6 space-y-3">
                   <div>
-                    <h3 className="text-2xl sm:text-3xl font-sans font-semibold text-[#F4F2ED] group-hover:text-[#D4F36A] transition-colors tracking-tight">
+                    <h3 className="text-2xl sm:text-3xl font-sans font-semibold text-[#171717] tracking-tight">
                       {project.title}
                     </h3>
-                    <p className="text-xs font-mono text-[#929292] tracking-wide mt-0.5">
+                    <p className="text-xs font-mono text-[#77766F] tracking-wide mt-0.5">
                       {project.tagline}
                     </p>
                   </div>
 
-                  <p className="text-sm font-body text-[#929292] leading-relaxed">
+                  <p className="text-sm font-body text-[#77766F] leading-relaxed">
                     {project.description}
                   </p>
 
@@ -113,7 +112,7 @@ export const Projects: React.FC = () => {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#181818] border border-[rgba(255,255,255,0.06)] text-[#F4F2ED]/80"
+                        className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#F7F6F2] border border-[#DEDDD6] text-[#171717]/85"
                       >
                         {tech}
                       </span>
@@ -128,7 +127,7 @@ export const Projects: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-2 text-xs font-mono px-4 py-2 rounded-full border border-[rgba(255,255,255,0.15)] text-[#F4F2ED] hover:border-[#D4F36A] hover:text-[#D4F36A] transition-all bg-[#151515]"
+                      className="inline-flex items-center space-x-2 text-xs font-mono px-4 py-2 rounded-full border border-[#DEDDD6] text-[#171717] hover:border-[#171717] bg-[#FFFFFF] transition-all shadow-xs"
                     >
                       <Github className="w-3.5 h-3.5" />
                       <span>REPOSITORY</span>
@@ -140,10 +139,10 @@ export const Projects: React.FC = () => {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-1.5 text-xs font-mono text-[#929292] hover:text-[#D4F36A] transition-colors"
+                      className="inline-flex items-center space-x-1.5 text-xs font-mono text-[#171717] hover:underline transition-colors font-medium"
                     >
                       <span>LIVE DEMO</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <ExternalLink className="w-3.5 h-3.5 text-[#B7CC64]" />
                     </a>
                   )}
                 </div>
@@ -157,13 +156,3 @@ export const Projects: React.FC = () => {
     </section>
   );
 };
-
-// Tech chip border styling
-
-// Tech chip border styling
-
-// Tech chip border styling
-
-// Tech chip border styling
-
-// Tech chip border styling

@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Printer, X, ExternalLink, CheckCircle } from 'lucide-react';
 import { personalInfo } from '../data/resume';
 import { educationInfo } from '../data/education';
-import { skillCategories } from '../data/skills';
-import { experienceData } from '../data/experience';
+import { skillCategoryGroups } from '../data/skills';
+import { activitiesData } from '../data/experience';
 import { projectsData } from '../data/projects';
 
 interface ResumeModalProps {
@@ -30,25 +30,25 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-md overflow-y-auto">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/50 backdrop-blur-sm overflow-y-auto">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          initial={{ opacity: 0, scale: 0.96, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-4xl bg-[#111111] border border-[rgba(255,255,255,0.15)] rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col"
+          exit={{ opacity: 0, scale: 0.96, y: 15 }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-full max-w-4xl bg-[#FFFFFF] border border-[#DEDDD6] rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col"
         >
-          {/* Modal Toolbar */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-[rgba(255,255,255,0.1)] bg-[#161616]">
-            <div className="flex items-center space-x-2 text-xs font-mono text-[#D4F36A]">
-              <CheckCircle className="w-4 h-4" />
+          {/* Modal Toolbar in Light Theme */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-[#DEDDD6] bg-[#F7F6F2]">
+            <div className="flex items-center space-x-2 text-xs font-mono text-[#171717] font-semibold">
+              <CheckCircle className="w-4 h-4 text-[#B7CC64]" />
               <span>ATS-COMPLIANT RESUME // ANTRIKSH GALHOTRA</span>
             </div>
 
             <div className="flex items-center space-x-3">
               <button
                 onClick={downloadDirectPDF}
-                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-[#D4F36A] text-[#090909] text-xs font-mono font-medium hover:bg-[#E4FF85] transition-colors"
+                className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-[#171717] text-[#FFFFFF] text-xs font-mono font-medium hover:bg-[#B7CC64] hover:text-[#171717] transition-colors shadow-xs"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>SAVE PDF</span>
@@ -56,7 +56,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
               <button
                 onClick={handlePrint}
-                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full border border-[rgba(255,255,255,0.15)] text-[#F4F2ED] text-xs font-mono hover:border-[#D4F36A] hover:text-[#D4F36A] transition-colors"
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full border border-[#DEDDD6] bg-[#FFFFFF] text-[#171717] text-xs font-mono hover:border-[#171717] transition-colors shadow-xs"
                 title="Print resume"
               >
                 <Printer className="w-3.5 h-3.5" />
@@ -65,7 +65,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
               <button
                 onClick={onClose}
-                className="p-1.5 rounded-full text-[#929292] hover:text-[#F4F2ED] hover:bg-[rgba(255,255,255,0.1)] transition-colors"
+                className="p-1.5 rounded-full text-[#77766F] hover:text-[#171717] hover:bg-[#EFEEE8] transition-colors"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -74,75 +74,71 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           {/* Printable Resume Document Container */}
-          <div className="p-8 sm:p-12 overflow-y-auto bg-white text-[#111111] font-sans selection:bg-[#D4F36A] selection:text-black">
+          <div className="p-8 sm:p-12 overflow-y-auto bg-white text-[#171717] font-sans selection:bg-[#B7CC64] selection:text-[#171717]">
             
             {/* Header */}
-            <div className="border-b-2 border-[#111111] pb-4 mb-6">
-              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#090909] uppercase">
+            <div className="border-b-2 border-[#171717] pb-4 mb-6">
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#171717] uppercase">
                 {personalInfo.name}
               </h1>
               <p className="text-sm font-medium text-[#444444] mt-1">
-                {personalInfo.role} &bull; Developer &bull; Product Enthusiast
+                {personalInfo.role}
               </p>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#555555] font-mono mt-2">
                 <span>{personalInfo.location}</span>
                 <span>&bull;</span>
-                <a href={`mailto:${personalInfo.email}`} className="text-black underline">{personalInfo.email}</a>
+                <a href={`mailto:${personalInfo.email}`} className="text-[#171717] underline">{personalInfo.email}</a>
                 <span>&bull;</span>
-                <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-black underline">github.com/Antrikshcodes</a>
+                <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-[#171717] underline">github.com/Antrikshcodes</a>
                 <span>&bull;</span>
-                <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-black underline">linkedin.com/in/antriksh-galhotra</a>
+                <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-[#171717] underline">linkedin.com/in/antriksh-galhotra</a>
               </div>
             </div>
 
             {/* Education */}
             <div className="mb-6">
-              <h2 className="text-xs font-bold font-mono tracking-wider uppercase text-black border-b border-gray-300 pb-1 mb-2">
+              <h2 className="text-xs font-bold font-mono tracking-wider uppercase text-[#171717] border-b border-gray-300 pb-1 mb-2">
                 EDUCATION
               </h2>
-              <div className="flex justify-between items-baseline text-sm font-bold text-[#111111]">
+              <div className="flex justify-between items-baseline text-sm font-bold text-[#171717]">
                 <span>{educationInfo.institution} &mdash; {educationInfo.university}</span>
                 <span className="text-xs font-normal text-gray-600 font-mono">{educationInfo.period}</span>
               </div>
               <div className="text-xs text-gray-700 italic mb-1">
-                {educationInfo.degree} &mdash; Specialization in {educationInfo.specialization} (First Year)
+                {educationInfo.degree} &mdash; Specialization in {educationInfo.specialization}
               </div>
               <p className="text-xs text-gray-700 leading-relaxed">
-                &bull; Rigorous curriculum focused on algorithmic foundations, data structures, and AI engineering principles.
+                &bull; Rigorous curriculum focused on algorithmic problem solving, software engineering, and modern AI architectures.
               </p>
             </div>
 
             {/* Skills */}
             <div className="mb-6">
-              <h2 className="text-xs font-bold font-mono tracking-wider uppercase text-black border-b border-gray-300 pb-1 mb-2">
-                TECHNICAL SKILLS
+              <h2 className="text-xs font-bold font-mono tracking-wider uppercase text-[#171717] border-b border-gray-300 pb-1 mb-2">
+                TECHNICAL SKILLS (VERIFIED FROM GITHUB PROFILE)
               </h2>
               <div className="space-y-1.5 text-xs">
-                <div>
-                  <span className="font-bold text-[#111111]">Programming Languages: </span>
-                  <span className="text-gray-800">Python, HTML, CSS</span>
-                </div>
-                <div>
-                  <span className="font-bold text-[#111111]">Developer Tools & Frameworks: </span>
-                  <span className="text-gray-800">Git, GitHub, React (modern component workflows), Linux/macOS</span>
-                </div>
-                <div>
-                  <span className="font-bold text-[#111111]">Areas of Focus: </span>
-                  <span className="text-gray-800">Artificial Intelligence, Machine Learning, Robotics (Microcontrollers/Motors), Product Development, UI/UX</span>
-                </div>
+                {skillCategoryGroups.map((group) => (
+                  <div key={group.id}>
+                    <span className="font-bold text-[#171717]">{group.title}: </span>
+                    <span className="text-gray-800">
+                      {group.technologies.map(t => t.name).join(', ')}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Experience & Hackathons */}
+            {/* Activities & Involvement */}
             <div className="mb-6">
-              <h2 className="text-xs font-bold font-mono tracking-wider uppercase text-black border-b border-gray-300 pb-1 mb-2">
-                EXPERIENCE, HACKATHONS & ACTIVITIES
+              <h2 className="text-xs font-bold font-mono tracking-wider uppercase text-[#171717] border-b border-gray-300 pb-1 mb-2">
+                ACTIVITIES & INVOLVEMENT
               </h2>
               <div className="space-y-3">
-                {experienceData.map((item) => (
+                {activitiesData.map((item) => (
                   <div key={item.id} className="text-xs">
                     <div className="flex justify-between items-baseline">
-                      <span className="font-bold text-[#111111]">
+                      <span className="font-bold text-[#171717]">
                         {item.title} &mdash; <span className="italic font-normal">{item.organization}</span>
                       </span>
                       <span className="text-gray-600 font-mono">{item.period}</span>
@@ -156,16 +152,16 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </div>
             </div>
 
-            {/* Projects */}
+            {/* Selected Projects */}
             <div>
-              <h2 className="text-xs font-bold font-mono tracking-wider uppercase text-black border-b border-gray-300 pb-1 mb-2">
+              <h2 className="text-xs font-bold font-mono tracking-wider uppercase text-[#171717] border-b border-gray-300 pb-1 mb-2">
                 SELECTED TECHNICAL PROJECTS
               </h2>
               <div className="space-y-3">
                 {projectsData.map((proj) => (
                   <div key={proj.id} className="text-xs">
                     <div className="flex justify-between items-baseline">
-                      <span className="font-bold text-[#111111]">{proj.title}</span>
+                      <span className="font-bold text-[#171717]">{proj.title}</span>
                       <span className="text-[11px] font-mono text-gray-600">
                         {proj.technologies.join(', ')}
                       </span>
@@ -181,11 +177,11 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           {/* Modal Footer note */}
-          <div className="px-6 py-3 border-t border-[rgba(255,255,255,0.1)] bg-[#161616] text-[11px] font-mono text-[#929292] flex justify-between items-center">
-            <span>Verified 2026 Academic & Project Credentials</span>
-            <button onClick={downloadDirectPDF} className="text-[#D4F36A] hover:underline flex items-center space-x-1">
+          <div className="px-6 py-3 border-t border-[#DEDDD6] bg-[#F7F6F2] text-[11px] font-mono text-[#77766F] flex justify-between items-center">
+            <span>Verified 2026–2030 Academic & Technical Credentials</span>
+            <button onClick={downloadDirectPDF} className="text-[#171717] font-semibold hover:underline flex items-center space-x-1">
               <span>Direct PDF Download</span>
-              <ExternalLink className="w-3 h-3" />
+              <ExternalLink className="w-3 h-3 text-[#B7CC64]" />
             </button>
           </div>
 
@@ -194,13 +190,3 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
     </AnimatePresence>
   );
 };
-
-// Printable layout conforms to 0.5in margins
-
-// Printable layout conforms to 0.5in margins
-
-// Printable layout conforms to 0.5in margins
-
-// Printable layout conforms to 0.5in margins
-
-// Printable layout conforms to 0.5in margins
