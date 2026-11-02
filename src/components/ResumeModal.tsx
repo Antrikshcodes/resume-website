@@ -194,3 +194,5 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
     </AnimatePresence>
   );
 };
+
+// Printable layout conforms to 0.5in margins
