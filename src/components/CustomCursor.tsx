@@ -4,7 +4,6 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 export const CustomCursor: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [isPointer, setIsPointer] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const mouseX = useMotionValue(-100);
@@ -16,7 +15,6 @@ export const CustomCursor: React.FC = () => {
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    // Detect touch device
     if (window.matchMedia('(pointer: coarse)').matches) {
       setIsTouchDevice(true);
       return;
@@ -46,7 +44,6 @@ export const CustomCursor: React.FC = () => {
       );
 
       setIsHovered(isInteractive);
-      setIsPointer(isInteractive);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -70,7 +67,7 @@ export const CustomCursor: React.FC = () => {
     <>
       {/* Precision inner center dot */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998] rounded-full bg-[#D4F36A]"
+        className="fixed top-0 left-0 pointer-events-none z-[9998] rounded-full bg-[#171717]"
         style={{
           x: mouseX,
           y: mouseY,
@@ -80,6 +77,7 @@ export const CustomCursor: React.FC = () => {
         animate={{
           width: isHovered ? 6 : 4,
           height: isHovered ? 6 : 4,
+          backgroundColor: isHovered ? '#B7CC64' : '#171717',
           opacity: 1
         }}
         transition={{ duration: 0.15 }}
@@ -87,7 +85,7 @@ export const CustomCursor: React.FC = () => {
 
       {/* Outer trailing ambient ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9997] rounded-full border border-[rgba(212,243,106,0.6)] mix-blend-screen"
+        className="fixed top-0 left-0 pointer-events-none z-[9997] rounded-full border border-[rgba(23,23,23,0.3)]"
         style={{
           x: smoothX,
           y: smoothY,
@@ -97,8 +95,8 @@ export const CustomCursor: React.FC = () => {
         animate={{
           width: isHovered ? 48 : 28,
           height: isHovered ? 48 : 28,
-          borderColor: isHovered ? 'rgba(212, 243, 106, 0.9)' : 'rgba(255, 255, 255, 0.25)',
-          backgroundColor: isHovered ? 'rgba(212, 243, 106, 0.08)' : 'transparent',
+          borderColor: isHovered ? '#B7CC64' : 'rgba(23, 23, 23, 0.25)',
+          backgroundColor: isHovered ? 'rgba(183, 204, 100, 0.12)' : 'transparent',
           scale: isHovered ? 1.15 : 1
         }}
         transition={{ type: 'spring', damping: 20, stiffness: 260 }}
@@ -106,15 +104,3 @@ export const CustomCursor: React.FC = () => {
     </>
   );
 };
-
-// Touch event guard active
-
-// Touch event guard active
-
-// Touch event guard active
-
-// Touch event guard active
-
-// Touch event guard active
-
-// Touch event guard active
