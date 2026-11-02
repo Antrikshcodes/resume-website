@@ -2,21 +2,21 @@ import { PersonalInfo } from './types';
 
 export const personalInfo: PersonalInfo = {
   name: "Antriksh Galhotra",
-  role: "Computer Science & AI Undergraduate",
+  role: "CS & AI Undergraduate | Developer | Product Enthusiast",
   institution: "Newton School of Technology, Rishihood University",
   degree: "B.Tech in Computer Science and Engineering (Artificial Intelligence)",
-  academicYear: "First Year (2026 — Present)",
+  academicYear: "2026–2030",
   location: "India",
-  email: "antriksh.codes@outlook.com",
+  email: "antriksh.codes@gmail.com",
   github: "https://github.com/Antrikshcodes",
   linkedin: "https://www.linkedin.com/in/antriksh-galhotra/",
-  tagline: "Building technology. Exploring ideas. Creating products.",
-  statusBadge: "Available for Technical Roles & Collaborations",
+  tagline: "Building things that solve real problems.",
+  statusBadge: "Available for Technical Roles & Research",
   interests: [
-    "Software Development",
     "Artificial Intelligence",
     "Robotics",
-    "Product Development",
-    "Creative Technology"
+    "Full-Stack Software Development",
+    "Product Architecture",
+    "Embedded Systems"
   ]
 };
