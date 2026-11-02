@@ -24,3 +24,13 @@ This repository powers the interactive digital resume of **Antriksh Galhotra**, 
   - **CoNSTruct 2.0 (Replit x Newton School of Technology):** Built Blindspot AI.
   - **ARTHAKRAM:** Product Consultation Club Member.
 - **Integrity Promise:** Every technical claim, project metric, and experience entry strictly reflects truthful first-year academic standing with zero fabricated metrics or artificial skill percentages.
+
+## 2. Design System & Aesthetic Foundation
+
+Inspired by the visual sophistication of **Hamol Studio** ([hamol.studio](https://hamol.studio/)), this digital resume moves away from conventional generic portfolio templates to adopt an uncompromising editorial aesthetic:
+
+- **Background:** Deep rich charcoal (`#090909`, `#111111`) with subtle procedural film grain.
+- **Typography:** Modern sans-serif headers (`Space Grotesk`), body readability (`Inter`, `Manrope`), and technical precision metadata (`IBM Plex Mono`).
+- **Accent:** Subtle electric lime / chartreuse (`#D4F36A`) used sparingly for focused visual hierarchy.
+- **Borders & Dividers:** Precision hairline borders (`rgba(255, 255, 255, 0.12)`).
+- **Asymmetric Composition:** Left-anchored editorial typography paired with an interactive 3D metallic gyroscopic structure.
