@@ -126,3 +126,5 @@ export const Footer: React.FC<FooterProps> = ({ onDownloadResume }) => {
     </footer>
   );
 };
+
+// Secure external anchor references
