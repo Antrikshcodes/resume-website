@@ -69,3 +69,5 @@ export const createTimelineLineAnimation = (
     }
   );
 };
+
+// ScrollTrigger scrub optimizations
