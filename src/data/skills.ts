@@ -31,3 +31,5 @@ export const skillCategories: SkillCategory[] = [
     ]
   }
 ];
+
+// Note: Proficiency levels reflect genuine student builds
