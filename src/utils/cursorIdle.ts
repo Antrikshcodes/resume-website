@@ -1,0 +1,1 @@
+export const CURSOR_IDLE_TIMEOUT_MS = 4000;
