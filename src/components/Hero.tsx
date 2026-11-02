@@ -203,3 +203,5 @@ export const Hero: React.FC<HeroProps> = ({ onDownloadResume }) => {
 // Hero typography tracking precision
 
 // Hero typography tracking precision
+
+// Hero typography tracking precision
