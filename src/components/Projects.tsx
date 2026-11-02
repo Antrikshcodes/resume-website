@@ -161,3 +161,5 @@ export const Projects: React.FC = () => {
 // Tech chip border styling
 
 // Tech chip border styling
+
+// Tech chip border styling
