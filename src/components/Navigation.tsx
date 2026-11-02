@@ -205,3 +205,5 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
 // Navigation backdrop saturation tuning
 
 // ARIA accessibility compliance
+
+// Navigation backdrop saturation tuning
