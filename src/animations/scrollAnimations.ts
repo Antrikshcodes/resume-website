@@ -73,3 +73,5 @@ export const createTimelineLineAnimation = (
 // ScrollTrigger scrub optimizations
 
 // ScrollTrigger scrub optimizations
+
+// ScrollTrigger scrub optimizations
