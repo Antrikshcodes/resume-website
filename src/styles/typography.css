@@ -1,0 +1,20 @@
+/* Editorial Typography Scaling */
+
+.editorial-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  font-feature-settings: "ss01" on, "cv01" on;
+}
+
+.editorial-mono {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.08em;
+  font-feature-settings: "zero" on;
+}
+
+.editorial-lead {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+}
