@@ -193,3 +193,5 @@ export const Hero: React.FC<HeroProps> = ({ onDownloadResume }) => {
     </section>
   );
 };
+
+// Hero typography tracking precision
