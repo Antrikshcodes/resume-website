@@ -1,4 +1,4 @@
-# Antriksh Galhotra — Digital Resume
+# Antriksh — Digital Resume
 
 > A premium, visually sophisticated, interactive one-page digital resume engineered with editorial precision and Hamol Studio-inspired motion aesthetics.
 
