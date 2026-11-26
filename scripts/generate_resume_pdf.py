@@ -218,6 +218,8 @@ def generate_pdf():
     elements.append(Paragraph("<b>SELECTED TECHNICAL PROJECTS</b>", section_heading))
 
     projects = [
+        ("SWARM &mdash; Warehouse Robot Coordination Simulator", "Next.js, React, TypeScript, Zustand, Three.js",
+         "Built a deterministic multi-robot warehouse simulation with space-time route reservations, deadlock recovery, package handover after robot failures, and live rerouting around aisle closures."),
         ("CONVERGE &mdash; Smart City Intelligence Platform", "Python, FastAPI, React, Data Classification",
          "Municipal grievance management platform improving civic triage, severity prioritisation, root-cause clustering, and citizen feedback loops."),
         ("BLINDSPOT AI &mdash; Contextual Anomaly Detection", "Python, Modern Web UI, System Prompts, React",
