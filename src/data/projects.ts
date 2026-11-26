@@ -3,7 +3,7 @@ import { ProjectItem } from './types';
 export const projectsData: ProjectItem[] = [
   {
     id: "swarm",
-    number: "02",
+    number: "01",
     title: "SWARM",
     tagline: "Warehouse Robot Coordination & Simulation",
     category: "Robotics & Multi-Agent Systems",
