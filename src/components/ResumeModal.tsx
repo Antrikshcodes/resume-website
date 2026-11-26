@@ -162,6 +162,11 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                   <div key={proj.id} className="text-xs">
                     <div className="flex justify-between items-baseline">
                       <span className="font-bold text-[#171717]">{proj.title}</span>
+                      {proj.githubUrl && (
+                        <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className="text-[10px] font-mono text-gray-600 underline">
+                          Repository
+                        </a>
+                      )}
                       <span className="text-[11px] font-mono text-gray-600">
                         {proj.technologies.join(', ')}
                       </span>
