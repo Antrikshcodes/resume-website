@@ -61,7 +61,7 @@ export const Projects: React.FC = () => {
             </h2>
           </div>
           <div className="mt-4 md:mt-0 text-xs font-mono text-[#77766F] tracking-wider">
-            [ 05 VERIFIED PROTOTYPES & SYSTEMS ]
+            [ 06 VERIFIED PROTOTYPES & SYSTEMS ]
           </div>
         </div>
 
@@ -84,7 +84,7 @@ export const Projects: React.FC = () => {
                     <span className="text-3xl sm:text-4xl font-mono font-bold text-[#171717] tracking-tighter">
                       {project.number}
                     </span>
-                    <span className="text-xs font-mono text-[#77766F]">/ 05</span>
+                    <span className="text-xs font-mono text-[#77766F]">/ 06</span>
                   </div>
 
                   <div className="inline-block px-2.5 py-1 rounded text-[11px] font-mono uppercase bg-[#F7F6F2] text-[#77766F] border border-[#DEDDD6]">
