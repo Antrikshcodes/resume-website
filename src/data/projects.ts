@@ -2,8 +2,19 @@ import { ProjectItem } from './types';
 
 export const projectsData: ProjectItem[] = [
   {
+    id: "swarm",
+    number: "02",
+    title: "SWARM",
+    tagline: "Warehouse Robot Coordination & Simulation",
+    category: "Robotics & Multi-Agent Systems",
+    description: "Built a deterministic warehouse simulation that assigns prioritized pickup and drop-off missions, coordinates robot paths with space-time reservations, resolves deadlocks, and recovers from robot failures and dynamic aisle closures.",
+    technologies: ["Next.js", "React", "TypeScript", "Zustand", "Three.js", "Vitest"],
+    githubUrl: "https://github.com/Antrikshcodes/swarm-robotics-simulator",
+    featured: true
+  },
+  {
     id: "converge",
-    number: "01",
+    number: "02",
     title: "CONVERGE",
     tagline: "Smart City Intelligence Platform",
     category: "AI & Civic Tech",
@@ -14,7 +25,7 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "blindspot-ai",
-    number: "02",
+    number: "03",
     title: "BLINDSPOT AI",
     tagline: "Contextual Anomaly & Blindspot Detection",
     category: "Artificial Intelligence",
@@ -25,7 +36,7 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "ordershield-ai",
-    number: "03",
+    number: "04",
     title: "ORDERSHIELD AI",
     tagline: "Supplier & Vendor Onboarding Verification Platform",
     category: "Enterprise AI & Risk",
@@ -37,7 +48,7 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "sesame-robot",
-    number: "04",
+    number: "05",
     title: "SESAME ROBOT",
     tagline: "Personal Robotics & Embedded Systems",
     category: "Robotics & Hardware",
@@ -48,7 +59,7 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "jarvis",
-    number: "05",
+    number: "06",
     title: "JARVIS",
     tagline: "Personal AI Assistant & Workstation Automation",
     category: "AI & Automation",
